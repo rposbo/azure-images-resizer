@@ -19,4 +19,13 @@
       <Setting name="Microsoft.ServiceBus.ConnectionString" />
     </ConfigurationSettings>
   </WebRole>
+  <WorkerRole name="UploadResized" vmsize="Small">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="Microsoft.ServiceBus.ConnectionString" />
+      <Setting name="Microsoft.Storage.ConnectionString" />
+    </ConfigurationSettings>
+  </WorkerRole>
 </ServiceDefinition>

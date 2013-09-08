@@ -45,12 +45,24 @@
       <RoleName>AzureImageResizer</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="..\UploadResized\UploadResized.csproj">
+      <Name>UploadResized</Name>
+      <Project>{a924a0e5-236e-4a9e-9331-a1d193bd4f02}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>UploadResized</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AzureImageResizerContent\" />
+    <Folder Include="UploadResizedContent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AzureImageResizerContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UploadResizedContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
