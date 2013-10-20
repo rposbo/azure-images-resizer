@@ -24,15 +24,8 @@ namespace ImagesProxy.Controllers
             {
                 try
                 {
-                    using (var wc = new WebClient())
-                    {
-                        var imageBytes = wc.DownloadData(
-                            string.Format("{0}?height={1}&width={2}&source={3}",
-                                          CloudConfigurationManager.GetSetting("Resizer_Endpoint"), height, width,
-                                          source));
-
-                        return BuildImageResponse(imageBytes, "Resizer", false);
-                    }
+                    var imageBytes = RequestResizedImage(height, width, source);
+                    return BuildImageResponse(imageBytes, "Resizer", false);
                 }
                 catch (WebException)
                 {
@@ -40,6 +33,19 @@ namespace ImagesProxy.Controllers
                     return BuildImageResponse(imageBytes, "CDN-Error", true);
                 }
             }
+        }
+
+        private static byte[] RequestResizedImage(int height, int width, string source)
+        {
+            byte[] imageBytes;
+            using (var wc = new WebClient())
+            {
+                imageBytes = wc.DownloadData(
+                    string.Format("{0}?height={1}&width={2}&source={3}",
+                                  CloudConfigurationManager.GetSetting("Resizer_Endpoint"), height, width,
+                                  source));
+            }
+            return imageBytes;
         }
 
         private static string BuildResizedFilenameFromParams(int height, int width, string source)
