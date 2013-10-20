@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureImageResizer", "AzureI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadResized", "UploadResized\UploadResized.csproj", "{A924A0E5-236E-4A9E-9331-A1D193BD4F02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagesProxy", "ImagesProxy\ImagesProxy.csproj", "{3F2DCA5A-0166-4032-9C4A-BEF89067BF92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{A924A0E5-236E-4A9E-9331-A1D193BD4F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A924A0E5-236E-4A9E-9331-A1D193BD4F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A924A0E5-236E-4A9E-9331-A1D193BD4F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2DCA5A-0166-4032-9C4A-BEF89067BF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2DCA5A-0166-4032-9C4A-BEF89067BF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2DCA5A-0166-4032-9C4A-BEF89067BF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2DCA5A-0166-4032-9C4A-BEF89067BF92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

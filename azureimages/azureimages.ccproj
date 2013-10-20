@@ -45,6 +45,14 @@
       <RoleName>AzureImageResizer</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="..\ImagesProxy\ImagesProxy.csproj">
+      <Name>ImagesProxy</Name>
+      <Project>{3f2dca5a-0166-4032-9c4a-bef89067bf92}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>ImagesProxy</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
     <ProjectReference Include="..\UploadResized\UploadResized.csproj">
       <Name>UploadResized</Name>
       <Project>{a924a0e5-236e-4a9e-9331-a1d193bd4f02}</Project>
@@ -56,10 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AzureImageResizerContent\" />
+    <Folder Include="ImagesProxyContent\" />
     <Folder Include="UploadResizedContent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AzureImageResizerContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ImagesProxyContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
     <Content Include="UploadResizedContent\diagnostics.wadcfg">
