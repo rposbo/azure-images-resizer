@@ -16,23 +16,38 @@ namespace ImagesProxy.Controllers
         {
             try
             {
-                var resizedFilename = BuildResizedFilenameFromParams(height, width, source);
-                var imageBytes = GetFromCdn("resized", resizedFilename);
-                return BuildImageResponse(imageBytes, "CDN", false);
+                return ReturnFromCdn(height, width, source);
             }
             catch (StorageException)
             {
                 try
                 {
-                    var imageBytes = RequestResizedImage(height, width, source);
-                    return BuildImageResponse(imageBytes, "Resizer", false);
+                    return ReturnFromResizer(height, width, source);
                 }
                 catch (WebException)
                 {
-                    var imageBytes = GetFromCdn("origin", "404.jpg");
-                    return BuildImageResponse(imageBytes, "CDN-Error", true);
+                    return ReturnError();
                 }
             }
+        }
+
+        private static HttpResponseMessage ReturnError()
+        {
+            var imageBytes = GetFromCdn("origin", "404.jpg");
+            return BuildImageResponse(imageBytes, "CDN-Error", true);
+        }
+
+        private static HttpResponseMessage ReturnFromResizer(int height, int width, string source)
+        {
+            var imageBytes = RequestResizedImage(height, width, source);
+            return BuildImageResponse(imageBytes, "Resizer", false);
+        }
+
+        private static HttpResponseMessage ReturnFromCdn(int height, int width, string source)
+        {
+            var resizedFilename = BuildResizedFilenameFromParams(height, width, source);
+            var imageBytes = GetFromCdn("resized", resizedFilename);
+            return BuildImageResponse(imageBytes, "CDN", false);
         }
 
         private static byte[] RequestResizedImage(int height, int width, string source)
